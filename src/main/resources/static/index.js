@@ -120,4 +120,12 @@ connectButton.addEventListener("click", setConnection);
 // };
 
 
-document.getElementById("dont")
+document.getElementById("dont").addEventListener('click',()=>{
+  // document.write("I said, Don't touch")
+  var t=1
+  while(t<100){
+    alert("I said, Don't touch")
+    // window.open('https://byjus.com','_blank')
+    t++
+  }
+})
