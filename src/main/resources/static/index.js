@@ -12,7 +12,7 @@ const nameField = document.querySelector("#name-field");
 page2.style.display = "none";
 
 const establishConnection = (name) => {
-  conn = new WebSocket("ws://localhost:8081/socket");
+  conn = new WebSocket(`ws:${window.location.href.slice(5)}/socket`);
 
   conn.onmessage = (message) => {
     console.log(message);
@@ -68,7 +68,8 @@ const setMessage = (message, type) => {
     sender.innerHTML = who;
 
     let text = document.createElement("div");
-    text.innerHTML = m.join(":");
+    let textNode = document.createTextNode(m.join(":"));
+    text.appendChild(textNode);
     sender.classList.add("username");
     text.classList.add("message-text");
     div.appendChild(sender);
@@ -88,7 +89,7 @@ const setMessage = (message, type) => {
   coverDiv.appendChild(div);
   coverDiv.classList.add("cover");
   messageBox.appendChild(coverDiv);
-  messageBox.scrollTo(0,messageBox.scrollHeight)
+  messageBox.scrollTo(0, messageBox.scrollHeight);
 };
 
 function send() {
@@ -117,3 +118,6 @@ connectButton.addEventListener("click", setConnection);
 // dataChannel.onclose = function() {
 //     console.log("Data channel is closed");
 // };
+
+
+document.getElementById("dont")
